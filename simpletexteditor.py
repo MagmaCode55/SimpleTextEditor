@@ -1,4 +1,4 @@
-from tkinter import filedialog
+from tkinter import filedialog, Scrollbar
 import tkinter as tk
 from tkinter.messagebox import showerror
 from ctypes import windll
@@ -57,7 +57,10 @@ root.title("Cool Text Editor - " + str(filename))
 root.minsize(width=400, height = 400)
 windll.shcore.SetProcessDpiAwareness(1)
 
-text = tk.Text(root, font='Roboto', borderwidth=0, padx="5px", pady="5px")
+scrollbar = Scrollbar(root)
+scrollbar.pack(side='right', fill='y')
+
+text = tk.Text(root, font='Roboto', borderwidth=0, padx="5px", pady="5px", yscrollcommand=scrollbar.set)
 text.pack(side='top', fill=tk.BOTH, expand=True)
 text.focus_set()
 text.mark_set("insert", tk.END)
@@ -80,4 +83,7 @@ root.bind('<Control-q>', lambda e: root.quit())
 menubar.add_cascade(label='File', menu=fileMenu)
 
 root.config(menu=menubar)
+
+scrollbar.config( command = text.yview )
+
 root.mainloop()
