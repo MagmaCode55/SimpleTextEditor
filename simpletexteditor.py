@@ -77,7 +77,7 @@ text.bind('<Control-s>', saveFile)
 fileMenu.add_command(label='Save As (Crtl+S)', command=saveAs)
 text.bind('<Control-S>', openFile)
 fileMenu.add_separator()
-fileMenu.add_command(label='Quit (Crtl-q)', command=root.quit)
+fileMenu.add_command(label='Quit (Crtl+q)', command=root.quit)
 root.bind('<Control-q>', lambda e: root.quit())
 
 menubar.add_cascade(label='File', menu=fileMenu)
